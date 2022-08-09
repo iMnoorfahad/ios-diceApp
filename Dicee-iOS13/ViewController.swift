@@ -14,29 +14,13 @@ class ViewController: UIViewController {
     var rightDiceNumber = 5
     @IBOutlet weak var firstDiece: UIImageView!
     @IBOutlet weak var secondDice: UIImageView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-    }
     
     @IBAction func Update(_ sender: UIButton) {
-        firstDiece.image = [ #imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")][leftDiceNumber]
         
-        secondDice.image = [ #imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")][rightDiceNumber]
+        let diceArray = [ #imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
         
-        if(leftDiceNumber < 5){
-            leftDiceNumber = leftDiceNumber + 1
-        }else{
-            leftDiceNumber = 1
-        }
+        firstDiece.image = diceArray[Int.random(in: 0...5)]
         
-        if(rightDiceNumber > 0){
-            rightDiceNumber = rightDiceNumber - 1
-            print("right dice number \(rightDiceNumber)")
-        }else{
-            rightDiceNumber = 5
-        }
-
+        secondDice.image = diceArray[Int.random(in: 0...5)]
     }
 }
